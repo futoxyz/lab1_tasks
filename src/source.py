@@ -26,6 +26,7 @@ class APISource:
             )
             tasks.append(current_task)
             logger.info(f"Initiated {current_task.id} with API using code {code}")
+        return tasks
 
 
 class FileSource:
@@ -36,6 +37,9 @@ class FileSource:
         self.file = path.abspath(file_dir)
 
     def get_tasks(self) -> list[Task]:
+        '''
+        Пример приема данных: Каждая строка - отдельная задача, первое слово - айди, далее описание.
+        '''
         logging.basicConfig(filename='filesrc.log', level=logging.INFO)
         tasks = []
         try:
@@ -64,6 +68,7 @@ class FileSource:
         except ValueError as e:
             logger.info(f"File does not contain correct info")
             raise ValueError(f"Bad line: {e}")
+        return tasks
 
 class RandomSource:
     def __init__(self, amount: int = 5):
