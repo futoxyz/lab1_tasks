@@ -1,0 +1,6 @@
+1 Freeze
+2 Stop
+5 Delete
+7 Refresh the page
+128 Update
+id Start
