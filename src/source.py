@@ -77,7 +77,7 @@ class RandomSource:
                 id=f"task_{i}",
                 payload={
                     "source": "generator",
-                    "hash": hashlib.sha256(f"GENERATORTASK_{i}".encode()).hexdigest(),
+                    "hash": hashlib.sha256(f"RANDOM{random.randint(100, 10000)}".encode()).hexdigest(),
                 }
             )
             tasks.append(current_task)
