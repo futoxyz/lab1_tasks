@@ -43,7 +43,7 @@ class FileSource:
                 for line in f:
                     id, description = line.split(maxsplit=1)
                     current_task = Task(
-                        id=f"task_{id}",
+                        id=id,
                         payload={
                             "source": "file",
                             "path": self.file,
