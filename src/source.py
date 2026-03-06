@@ -1,13 +1,31 @@
 from src.task import Task
+from src.constants import STRINGS
 from os import path
 import hashlib
 import logging
+import random
 logger = logging.getLogger(__name__)
 
 
-'''class APISource:
+class APISource:
+    def __init__(self, amount: int = 5):
+        self.amount = amount
+
     def get_tasks(self) -> list[Task]:
-'''
+        tasks = []
+        logging.basicConfig(filename='apisrc.log', level=logging.INFO)
+        for i in range(1, self.amount + 1):
+            code = random.randint(10000, 99999)
+            current_task = Task(
+                id=f"task_{i}",
+                payload={
+                    "source": "api",
+                    "code": code,
+                    "description": random.choice(STRINGS),
+                }
+            )
+            tasks.append(current_task)
+            logger.info(f"Initiated {current_task.id} with API using code {code}")
 
 
 class FileSource:
